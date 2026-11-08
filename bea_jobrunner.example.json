@@ -1,0 +1,16 @@
+{
+  "root": ".",
+  "mode": "ask",
+  "countdown": 3,
+  "envs": {
+    "system": "@system",
+    "gpu": "~/bea_gpu_env/bin/python",
+    "ebody": "~/ebody_venv/bin/python",
+    "coral": "~/bea_coral39/bin/python"
+  },
+  "builtins": {
+    "gpu_status": ["rocm-smi", "--showuse", "--showmemuse", "--showtemp"],
+    "who_uses_gpu": ["fuser", "-v", "/dev/kfd"]
+  },
+  "auto_scripts": []
+}

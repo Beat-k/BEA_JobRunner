@@ -1,0 +1,16 @@
+# User service. Note: with mode "ask" the runner needs a terminal to prompt you, so run it in a terminal.
+# This unit is only for mode "trusted"/"auto" with a tightly scoped auto_scripts list.
+# Install: cp bea-jobrunner.service ~/.config/systemd/user/ && systemctl --user daemon-reload && systemctl --user enable --now bea-jobrunner
+[Unit]
+Description=BEA_JobRunner (job mailbox)
+
+[Service]
+WorkingDirectory=%h/bea_backup_restore/BEATEK_Ecosystem/BEA_E-Body/ebody_v0_linux
+ExecStart=/usr/bin/python3 -m BEA_JobRunner run --mode trusted --config bea_jobrunner.json
+Environment=PYTHONPATH=%h/bea_backup_restore/BEATEK_Ecosystem
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
